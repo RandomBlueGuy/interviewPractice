@@ -1,0 +1,18 @@
+
+
+function findItemIterations(arr, value) {
+   let nIterations = 0;
+
+   arr.map((item) => {
+      if(Array.isArray(item)){
+         nIterations += findItemIterations(item, value);
+      } else {
+         if(item === value) {nIterations += 1;}
+      }
+   })
+
+   return nIterations;
+}
+
+console.log(findItemIterations([1, [1, "apple", 2, [2, 6, "apple"]], "even more", "apple"], "apple"));
+console.log(findItemIterations([1, [1, "apple", 2, [2, 6, "apple"]], "even more", "apple"], 2));
